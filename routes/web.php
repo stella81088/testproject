@@ -13,5 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
 Route::get('/{item}', 'App\Http\Controllers\MainController@show');
+
+
+
 //{item} is what comes after the url is typed
