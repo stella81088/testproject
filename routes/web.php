@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
-Route::get('/{item}', 'App\Http\Controllers\MainController@show');
+Route::get('/',function(){
+    return view('welcome');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+//Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
+//Route::get('/{item}', 'App\Http\Controllers\MainController@show');
 
 
 
