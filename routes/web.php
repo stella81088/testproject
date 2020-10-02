@@ -19,11 +19,22 @@ Route::get('/',function(){
 
 Route::get('/about', function () {
 
-    $article = \App\Models\Article::all();
-
-    return $article;
-    return view('about');
+    $articles = \App\Models\Article::all();
+    return view('about',[
+        'articles'=> $articles
+    ]);
 });
+
+/*Route::get('/articles', function(){
+    $articles = \App\Models\Article::all();
+    return view('articles', [
+        'articles' => $articles
+    ]);
+});*/
+
+Route::get('/articles',
+    'App\Http\Controllers\ArticlesController@index');
+Route::get('/articles/{article}', 'App\Http\Controllers\ArticlesController@show');
 //Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
 //Route::get('/{item}', 'App\Http\Controllers\MainController@show');
 
