@@ -32,9 +32,14 @@ Route::get('/about', function () {
     ]);
 });*/
 
-Route::get('/articles',
-    'App\Http\Controllers\ArticlesController@index');
-Route::get('/articles/{article}', 'App\Http\Controllers\ArticlesController@show');
+
+Route::get('/articles','App\Http\Controllers\ArticlesController@index'); //show list of articles
+
+Route::get('/articles/create','App\Http\Controllers\ArticlesController@create'); //create new article
+
+Route::get('/articles/{article}', 'App\Http\Controllers\ArticlesController@show'); //show one article
+
+
 //Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
 //Route::get('/{item}', 'App\Http\Controllers\MainController@show');
 
