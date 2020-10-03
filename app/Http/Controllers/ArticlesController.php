@@ -27,17 +27,33 @@ class ArticlesController extends Controller
 
     public function store() //persist the create form
     {
-        # code...
+        $article = new Article(); //initiating row to table 
+        $article->title = request('title');
+        $article->excerpt = request('excerpt');
+        $article->body = request('body');
+
+        $article-> save();
+
+        return redirect('/articles'); //after submit, return to another page
     }
 
-    public function edit() //show a view to edit an existing resource
+    public function edit($id) //show a view to edit an existing resource
     {
-        # code...
+        $article = Article::find($id); //identify which article
+        return view('articles.edit', compact('article'));
     }
 
-    public function update() //persist/update the edited resource
+    public function update($id) //persist/update the edited resource
     {
-            
+        $article = Article::find($id); //find article to update
+        $article->title = request('title');
+        $article->excerpt = request('excerpt');
+        $article->body = request('body');
+
+        $article->save();
+
+        //return view('/articles'); //after submit, return to another page
+        return view('articles.show', ['article' => $article]); //reference folder and file
     }
 
     public function destroy() //to delete the list/article/resource

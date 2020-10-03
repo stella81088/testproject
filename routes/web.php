@@ -34,12 +34,12 @@ Route::get('/about', function () {
 
 
 Route::get('/articles','App\Http\Controllers\ArticlesController@index'); //show list of articles
-
+Route::post('/articles', 'App\Http\Controllers\ArticlesController@store'); //store new article
 Route::get('/articles/create','App\Http\Controllers\ArticlesController@create'); //create new article
 
 Route::get('/articles/{article}', 'App\Http\Controllers\ArticlesController@show'); //show one article
-
-
+Route::get('/articles/{article}/edit', 'App\Http\Controllers\ArticlesController@edit'); //edit article
+Route::put('/articles/{article}', 'App\Http\Controllers\ArticlesController@update');//go to update
 //Route::get('/welcome', 'App\Http\Controllers\Controller@welcome');
 //Route::get('/{item}', 'App\Http\Controllers\MainController@show');
 
