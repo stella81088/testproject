@@ -7,25 +7,51 @@
             <h1> New Article </h1>
 
             <form method="POST" action="/articles">
-                @csrf 
+                @csrf
                 <div class="field">
                     <label class="label" for="title"> Title </label>
                     <div class="control">
-                        <input class="input" type="text" name="title" id="title">
+                        <input class="input" 
+                        type="text" 
+                        name="title" 
+                        id="title" 
+                        required 
+                        value="{{old('title')}}"> <!-- keep value of already entered info -->
+
+                        @error('title')
+                        <!-- error message if not filled out-->
+                        <p class="help is-danger">{{ $errors->first('title') }}</p>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label" for="excerpt"> Excerpt </label>
                     <div class="control">
-                        <input class="textarea" type="text" name="excerpt" id="excerpt">
+                        <input class="textarea" 
+                        type="text" 
+                        name="excerpt" 
+                        id="excerpt" 
+                        required 
+                        value="{{old('excerpt')}}">
+                        @error('excerpt')
+                        <!-- error message if not filled out-->
+                        <p class="help is-danger">{{ $errors->first('excerpt') }}</p>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label" for="body"> Body </label>
                     <div class="control">
-                        <textarea class="textarea" name="body" id="body"></textarea>
+                        <textarea class="textarea @error('body') is-danger @enderror" 
+                        name="body" 
+                        id="body" 
+                        >{{old('body')}}</textarea>
+                        @error('body')
+                        <!-- error message if not filled out-->
+                        <p class="help is-danger">{{ $errors->first('body') }}</p>
+                        @enderror
                     </div>
                 </div>
 

@@ -27,6 +27,12 @@ class ArticlesController extends Controller
 
     public function store() //persist the create form
     {
+        request()->validate([ 
+            'title'=>['required','min:3', 'max:255'], //require input, 3-255 characs
+            'excerpt'=>'required',
+            'body'=>'required'
+        ]);
+
         $article = new Article(); //initiating row to table 
         $article->title = request('title');
         $article->excerpt = request('excerpt');
@@ -45,6 +51,12 @@ class ArticlesController extends Controller
 
     public function update($id) //persist/update the edited resource
     {
+        request()->validate([
+            'title' => ['required', 'min:3', 'max:255'], //require input, 3-255 characs
+            'excerpt' => 'required',
+            'body' => 'required'
+        ]);
+        
         $article = Article::find($id); //find article to update
         $article->title = request('title');
         $article->excerpt = request('excerpt');
