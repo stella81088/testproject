@@ -35,7 +35,7 @@ define('PI', 3.1415);
 
     <!-- no longer a string, it is an object-->
     <!-- give me the body of the message-->
-    <p>{{$message -> body}}</p>
+    <p>{{$message ?? '' -> body}}</p>
     <p>Name: <?php echo $f_name . ' ' . $l_name; ?> </p>
 
     <!-- calling upon php script you are in-->
